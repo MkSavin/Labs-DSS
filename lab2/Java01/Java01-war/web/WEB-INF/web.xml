@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+    
+    <servlet>
+        <servlet-name>UsersServlet</servlet-name>
+        <servlet-class>Servlet.UsersServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserEdit</servlet-name>
+        <servlet-class>Servlet.UserEditServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>UserCreate</servlet-name>
+        <servlet-class>Servlet.UserCreateServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Data</servlet-name>
+        <servlet-class>Servlet.DataServlet</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>UsersServlet</servlet-name>
+        <url-pattern>/users</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserEdit</servlet-name>
+        <url-pattern>/userEdit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserCreate</servlet-name>
+        <url-pattern>/userCreate</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Data</servlet-name>
+        <url-pattern>/data</url-pattern>
+    </servlet-mapping>
+    
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+    </welcome-file-list>
+</web-app>

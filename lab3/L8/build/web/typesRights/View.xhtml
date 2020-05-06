@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewTypesRightsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewTypesRightsLabel_id}"/>
+                    <h:outputText value="#{typesRightsController.selected.id}" title="#{bundle.ViewTypesRightsTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewTypesRightsLabel_rightId}"/>
+                    <h:outputText value="#{typesRightsController.selected.rightId}" title="#{bundle.ViewTypesRightsTitle_rightId}"/>
+                    <h:outputText value="#{bundle.ViewTypesRightsLabel_usertypeId}"/>
+                    <h:outputText value="#{typesRightsController.selected.usertypeId}" title="#{bundle.ViewTypesRightsTitle_usertypeId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{typesRightsController.destroyAndView}" value="#{bundle.ViewTypesRightsDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewTypesRightsEditLink}"/>
+                <br />
+                <h:commandLink action="#{typesRightsController.prepareCreate}" value="#{bundle.ViewTypesRightsCreateLink}" />
+                <br />
+                <h:commandLink action="#{typesRightsController.prepareList}" value="#{bundle.ViewTypesRightsShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewTypesRightsIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

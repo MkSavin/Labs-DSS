@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListRightsTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListRightsEmpty}" rendered="#{rightsController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{rightsController.items.rowCount > 0}">
+                    <h:outputText value="#{rightsController.pagination.pageFirstItem + 1}..#{rightsController.pagination.pageLastItem + 1}/#{rightsController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{rightsController.previous}" value="#{bundle.Previous} #{rightsController.pagination.pageSize}" rendered="#{rightsController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{rightsController.next}" value="#{bundle.Next} #{rightsController.pagination.pageSize}" rendered="#{rightsController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{rightsController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRightsTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListRightsTitle_code}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.code}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{rightsController.prepareView}" value="#{bundle.ListRightsViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{rightsController.prepareEdit}" value="#{bundle.ListRightsEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{rightsController.destroy}" value="#{bundle.ListRightsDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{rightsController.prepareCreate}" value="#{bundle.ListRightsCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListRightsIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
